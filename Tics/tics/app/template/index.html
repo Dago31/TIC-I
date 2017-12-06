@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -55,12 +55,11 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title"></i> Ultimas alertas</h3>
                             </div>
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-hover table-striped">
+                            <div class="panel-body"style="overflow-y : scroll; height:10cm;" >
+                                   <table class="table table-fixed" >
                                         <thead>
                                             <tr>
-                                                <th>habitacion</th>
+                                                <th>Habitacion</th>
                                                 <th>Fecha </th>
                                             </tr>
                                         </thead>
@@ -73,12 +72,133 @@
                                           {% endfor %}
                                         </tbody>
                                     </table>
-                                </div>
                             </div>
                         </div>
                     </div>
+                    <html>
+<head>
+<title>Tiempo de encendido</title>
+<script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+<script type="text/javascript" src="http://static.fusioncharts.com/code/latest/themes/fusioncharts.theme.fint.js?cacheBust=56"></script>
+<script type="text/javascript">
+  FusionCharts.ready(function(){
+    var fusioncharts = new FusionCharts({
+    type: 'msstepline',
+    renderAt: 'chart-container',
+    width: '550',
+    height: '350',
+    dataFormat: 'json',
+    dataSource: {
+        "chart": {
+            "caption": "Estado Vs Tiempo",
+            "subCaption": "ultimos 7 dias",
+            "captionFontSize": "14",
+            "subcaptionFontSize": "14",
+            "subcaptionFontBold": "0",
+            "baseFontColor": "#333333",
+            "baseFont": "Helvetica Neue,Arial",
+            "xaxisname": "Fecha",
+            "yaxisname": "Estado",
+            "usePlotGradientColor": "0",
+            "bgColor": "#ffffff",
+            "palettecolors": "#6baa01, #d35400",
+            "showBorder": "0",
+            "showPlotBorder": "0",
+            "showValues": "0",
+            "showShadow": "0",
+            "showAlternateHGridColor": "0",
+            "showCanvasBorder": "0",
+            "showXAxisLine": "1",
+            "numberprefix": "",
+            "xAxisLineThickness": "1",
+            "xAxisLineColor": "#999999",
+            "canvasBgColor": "#ffffff",
+            "divlineAlpha": "100",
+            "divlineColor": "#999999",
+            "divlineThickness": "1",
+            "divLineIsDashed": "1",
+            "divLineDashLen": "1",
+            "legendBorderAlpha": "0",
+            "legendShadow": "0",
+            "toolTipColor": "#ffffff",
+            "toolTipBorderThickness": "0",
+            "toolTipBgColor": "#000000",
+            "toolTipBgAlpha": "80",
+            "toolTipBorderRadius": "2",
+            "toolTipPadding": "5"
+        },
+        "categories": [{
+            "category": [{
+                "label": "Jan"
+            }, {
+                "label": "Feb"
+            }, {
+                "label": "Mar"
+            }, {
+                "label": "Apr"
+            }, {
+                "label": "May"
+            }, {
+                "label": "Jun"
+            }, {
+                "label": "Jul"
+            }, {
+                "label": "Aug"
+            }, {
+                "label": "Sep"
+            }, {
+                "label": "Oct"
+            }, {
+                "label": "Nov"
+            }, {
+                "label": "Dec"
+            }]
+        }],
+        "dataset": [{
+            "seriesname": "Estado",
+            "linethickness": "3",
+            "anchorradius": "3",
+            "data": [{
+                "value": "1"
+            }, {
+                "value": "0"
+            }, {
+                "value": "0"
+            }, {
+                "value": "0"
+            }, {
+                "value": "1"
+            }, {
+                "value": "1"
+            }, {
+                "value": "0"
+            }, {
+                "value": "1"
+            }, {
+                "value": "1"
+            }, {
+                "value": "1"
+            }, {
+                "value": "0"
+            }, {
+                "value": "0"
+            }]
+        }]
+    }
+
+}
+);
+    fusioncharts.render();
+});
+</script>
+</head>
+<body>
+  <div id="chart-container">FusionCharts XT will load here!</div>
+</body>
+</html>
                 </div>
-            </div>
+
+            
 
             <!-- <div class="panel panel-default"> asjdknsadsa</div> -->
             <!-- /.container-fluid -->
@@ -91,6 +211,7 @@
 
     <!-- jQuery -->
     <script src="../static/js/jquery.js"></script>
+
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../static/js/bootstrap.min.js"></script>
