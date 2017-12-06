@@ -12,13 +12,25 @@ cur = conn.cursor()
 def index():
 
 	sql = """
-	select * from alerta ;
+	select * from (select * from alerta) as FOO order by id desc;
+
 	"""
 	print sql
 	cur.execute(sql)
 	alertas = cur.fetchall()
-	print alertas
-	return render_template("index.html",alertas=alertas)
+	#print alertas
+	sql = """
+	select foo.fecha from (select * from encendido) as foo order by foo.fecha desc;
+	"""
+	cur.execute(sql)
+	encendido = cur.fetchall()
+	sql = """
+	select foo.fecha from (select * from apagado) as foo order by foo.fecha desc;
+	"""
+	cur.execute(sql)
+	apagado = cur.fetchall()
+	print encendido
+	return render_template("index.html",alertas=alertas, encendido = encendido)
 
 
 
