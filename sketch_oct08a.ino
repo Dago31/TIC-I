@@ -1,6 +1,6 @@
 
 
-
+int LDRDetectedPin = 1;
 int soundDetectedPin = 0;
 int LEDDetectedPin = 13;
 int soundDetectedVal = 0;
@@ -11,6 +11,8 @@ int led = 0;
 int estate = 0;
 int modo = 0;
 int alerta = 0;
+int LDR = 0;
+char ser = 0;
 unsigned int tiempo, distancia;
 
 void setup ()
@@ -21,6 +23,7 @@ void setup ()
   pinMode (echoDetectedPin, INPUT) ;
   pinMode (trigDetectedPin, OUTPUT) ;
   pinMode (LEDDetectedPin, OUTPUT) ;
+  pinMode (LDRDetectedPin, OUTPUT) ;
 }
 void loop ()
 {
@@ -35,6 +38,8 @@ void loop ()
     }else
     {
       modo = 0;
+      digitalWrite(13, LOW);
+      led = 0;
     }
   }
   if (modo == 1)
@@ -58,16 +63,33 @@ void loop ()
     delay(200);
  
     // ENCENDER EL LED CUANDO SE CUMPLA CON CIERTA DISTANCIA
+    LDR = analogRead (LDRDetectedPin) ;
+    if (Serial.available()>0) 
+      {
+        ser = Serial.read();
+      }
     if (distancia <= 15) {
       digitalWrite(13, LOW);
       alerta = 1;
     } 
     if (alerta == 0 )
     {
-      digitalWrite(13, HIGH);
+      if(LDR <= 20)
+      {
+        if (ser =='5')
+        {
+          digitalWrite(13, HIGH);
+        }
+       Serial.print(modo);
+       Serial.print(led);
+       Serial.println(alerta); 
+      }else if (LDR > 20){
+        digitalWrite(13, LOW);
+      }
     }else
     {
       digitalWrite(13, LOW);
+      Serial.print(modo);
       Serial.print(led);
       Serial.println(alerta);
       delay(2000);
@@ -83,6 +105,7 @@ void loop ()
         digitalWrite(13, LOW);
         led = 0;
         delay(100);
+        Serial.print(modo);
         Serial.print(led) ;
         Serial.println(alerta);
       }
@@ -91,6 +114,7 @@ void loop ()
         digitalWrite(13, HIGH);
         led = 1;
         delay(100);
+        Serial.print(modo);
         Serial.print(led) ;
         Serial.println(alerta);
       }
