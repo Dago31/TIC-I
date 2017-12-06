@@ -91,7 +91,7 @@
     dataSource: {
         "chart": {
             "caption": "Estado Vs Tiempo",
-            "subCaption": "ultimos 7 dias",
+            "subCaption": "ultimos 6 dias",
             "captionFontSize": "14",
             "subcaptionFontSize": "14",
             "subcaptionFontBold": "0",
@@ -101,7 +101,7 @@
             "yaxisname": "Estado",
             "usePlotGradientColor": "0",
             "bgColor": "#ffffff",
-            "palettecolors": "#6baa01, #d35400",
+            "palettecolors": "#6baa01, #d35400, #FF0000, #2E2EFE, #DF01A5, #58FAF4",
             "showBorder": "0",
             "showPlotBorder": "0",
             "showValues": "0",
@@ -128,62 +128,101 @@
             "toolTipPadding": "5"
         },
         "categories": [{
-            "category": [{
-                "label": "Jan"
-            }, {
-                "label": "Feb"
-            }, {
-                "label": "Mar"
-            }, {
-                "label": "Apr"
-            }, {
-                "label": "May"
-            }, {
-                "label": "Jun"
-            }, {
-                "label": "Jul"
-            }, {
-                "label": "Aug"
-            }, {
-                "label": "Sep"
-            }, {
-                "label": "Oct"
-            }, {
-                "label": "Nov"
-            }, {
-                "label": "Dec"
+            "category": [
+              {% for i in encendido1 %}
+              {
+                "label": "{{i[0]}}"
+            },
+              {% endfor %}
+             {
+                "label": "00:00"
             }]
         }],
         "dataset": [{
-            "seriesname": "Estado",
+            "seriesname": "{{d1}}",
             "linethickness": "3",
             "anchorradius": "3",
-            "data": [{
-                "value": "1"
-            }, {
-                "value": "0"
-            }, {
-                "value": "0"
-            }, {
-                "value": "0"
-            }, {
-                "value": "1"
-            }, {
-                "value": "1"
-            }, {
-                "value": "0"
-            }, {
-                "value": "1"
-            }, {
-                "value": "1"
-            }, {
-                "value": "1"
-            }, {
-                "value": "0"
-            }, {
+            "data": [
+              {% for i in encendido1 %}
+              {
+                "value": "{{i[1]}}"
+            },
+              {% endfor %}
+              {
                 "value": "0"
             }]
-        }]
+          },
+        {
+            "seriesname": "{{d2}}",
+            "linethickness": "3",
+            "anchorradius": "3",
+            "data": [
+              {% for i in encendido2 %}
+              {
+                "value": "{{i[1]}}"
+            },
+              {% endfor %}
+              {
+                "value": "0"
+            }]
+          },
+          {
+              "seriesname": "{{d3}}",
+              "linethickness": "3",
+              "anchorradius": "3",
+              "data": [
+                {% for i in encendido3 %}
+                {
+                  "value": "{{i[1]}}"
+              },
+                {% endfor %}
+                {
+                  "value": "0"
+              }]
+            },
+            {
+                "seriesname": "{{d4}}",
+                "linethickness": "3",
+                "anchorradius": "3",
+                "data": [
+                  {% for i in encendido4 %}
+                  {
+                    "value": "{{i[1]}}"
+                },
+                  {% endfor %}
+                  {
+                    "value": "0"
+                }]
+              },
+              {
+                  "seriesname": "{{d5}}",
+                  "linethickness": "3",
+                  "anchorradius": "3",
+                  "data": [
+                    {% for i in encendido5 %}
+                    {
+                      "value": "{{i[1]}}"
+                  },
+                    {% endfor %}
+                    {
+                      "value": "0"
+                  }]
+                },
+                {
+                    "seriesname": "{{d6}}",
+                    "linethickness": "3",
+                    "anchorradius": "3",
+                    "data": [
+                      {% for i in encendido6 %}
+                      {
+                        "value": "{{i[1]}}"
+                    },
+                      {% endfor %}
+                      {
+                        "value": "0"
+                    }]
+                  }]
+
     }
 
 }
@@ -198,7 +237,7 @@
 </html>
                 </div>
 
-            
+
 
             <!-- <div class="panel panel-default"> asjdknsadsa</div> -->
             <!-- /.container-fluid -->
